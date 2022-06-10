@@ -8,8 +8,10 @@ namespace Restaurante.Models
     public partial class DetalleXfactura
     {
         public int IdDetalleXfactura { get; set; }
+        [Required(ErrorMessage = "Seleccionar una factura")]
         [Display(Name = "Factura")]
         public int FacturaId { get; set; }
+        [Required(ErrorMessage = "Seleccionar un supervisor")]
         [Display(Name = "Supervisor")]
         public int SupervisorId { get; set; }
         [Display(Name = "Nombre del plato")]
