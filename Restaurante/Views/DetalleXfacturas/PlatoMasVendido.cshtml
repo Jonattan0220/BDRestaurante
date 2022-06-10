@@ -1,0 +1,58 @@
+﻿@model Restaurante.Models.PlatoMasVendidoViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Plato mas vendido en el restaurante, cantidad vendida así como el monto total facturado</h2>
+<br/>
+<div class="row">
+    <div class="text-center">
+        <form asp-action="PlatoMasVendido">
+            <div class="form-group">
+                <label class="control-label">Fecha inicial: </label>
+                <input type="datetime-local" name="starDate" value="@ViewData["starDate"]"/>  
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="control-label">Fecha final: </label>
+                <input type="datetime-local" name="endDate" value="@ViewData["endDate"]"/>  
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Filtrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+<br/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Plato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadVendidos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoFacturado)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Plato)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CantidadVendidos)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.MontoFacturado)
+            </td>
+        </tr>
+    </tbody>
+</table>

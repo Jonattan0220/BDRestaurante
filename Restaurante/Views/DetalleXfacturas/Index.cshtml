@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Restaurante.Models.DetalleXfactura>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de los detalles de las facturas</h1>
+
+<p>
+    <a asp-action="Create">Registrar una nueva descripción para una factura previamente registrada</a>
+</p>
+<p>
+    <a asp-action="PlatoMasVendido">Plato mas vendido en el restaurante, cantidad vendida así como el monto total facturado</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Plato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Factura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supervisor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Factura.FacturaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supervisor.SupervirsorId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDetalleXfactura">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDetalleXfactura">Ver detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdDetalleXfactura">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Restaurante.Models.VentaMeseroViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Total (suma) vendido por cada mesero (incluyendo los que no hayan realizado ventas), así como sus datos de nombres y apellidos</h2>
+<br/>
+<div class="row">
+    <div class="text-center">
+        <form asp-action="Ventas">
+            <div class="form-group">
+                <label class="control-label">Fecha inicial: </label>
+                <input type="datetime-local" name="starDate" value="@ViewData["starDate"]"/>  
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="control-label">Fecha final: </label>
+                <input type="datetime-local" name="endDate" value="@ViewData["endDate"]"/>  
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Filtrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+<br/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MeseroId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SumaVentas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeseroId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SumaVentas)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

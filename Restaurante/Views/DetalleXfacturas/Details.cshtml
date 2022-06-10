@@ -1,0 +1,42 @@
+﻿@model Restaurante.Models.DetalleXfactura
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>DetalleXfactura</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Plato)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Plato)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Factura)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Factura.FacturaId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Supervisor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Supervisor.SupervirsorId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdDetalleXfactura">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

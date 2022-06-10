@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Restaurante.Models.CompraClienteViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Despliegue de los clientes con consumos superiores o iguales al valor digitado por el usuario (con un valor de entrada a la consulta)</h2>
+<br/>
+<h3>Se informan de los clientes con cada una de sus facturas registradas y su valor por cada una</h3>
+<br/>
+<div class="row">
+    <div class="text-center">
+        <form asp-action="Compras">
+            <div class="form-group">
+                <label class="control-label">Fecha inicial: </label>
+                <input type="datetime-local" name="starDate" value="@ViewData["starDate"]"/>  
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="control-label">Fecha final: </label>
+                <input type="datetime-local" name="endDate" value="@ViewData["endDate"]"/>  
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="control-label">Valor: </label>
+                <input type="number" name="valor" value="@ViewData["valor"]"/>  
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Filtrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+<br/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacturaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SumaValorFactura)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacturaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SumaValorFactura)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
